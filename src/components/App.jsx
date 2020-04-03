@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 function App() {
 
-  const [item, setItem] = useState(" ");
+  const [item, setItem] = useState("");
   const [items, setItems] = useState([]);
 
   function handleItem(event) {  // Save the value of the input field to the State
@@ -28,7 +28,7 @@ function App() {
       </div>
       <div className="form">
 
-        <input onChange={handleItem} type="text" name="item" value={item} />
+        <input autoFocus onChange={handleItem} type="text" name="item" value={item} />
         <button onClick={addItem}><span>Add</span></button>
 
 
