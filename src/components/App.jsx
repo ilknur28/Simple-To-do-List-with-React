@@ -1,24 +1,25 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import ToDoItem from "./ToDoItem"
 
 function App() {
-
-  const [item, setItem] = useState("");
+  const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([]);
 
-  function handleItem(event) {  // Save the value of the input field to the State
+  function handleItem(event) {
+    // Save the value of the input field to the State
     const newValue = event.target.value;
 
-    setItem(newValue);
+    setInputText(newValue);
   }
 
-  function addItem() { // Add new item to an Array and clear the Input field
-    
+  function addItem() {
+    // Add new item to an Array and clear the Input field
 
     setItems((prevItems) => {
-        return [...prevItems, item] //Add the new item to
+      return [...prevItems, inputText]; //Add the new item to
     });
 
-    setItem(""); // Clears the input field
+    setInputText(""); // Clears the input field
   }
 
   return (
@@ -27,15 +28,16 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-
-        <input autoFocus onChange={handleItem} type="text" name="item" value={item} />
-        <button onClick={addItem}><span>Add</span></button>
-
-
+        <input autoFocus onChange={handleItem} type="text" value={inputText} />
+        <button onClick={addItem}>
+          <span>Add</span>
+        </button>
       </div>
       <div>
         <ul>
-       { items.map((toDoItem) => <li>{toDoItem} </li>)}
+          {items.map((toDoItem) => (
+            <ToDoItem itemText={toDoItem} />
+          ))}
         </ul>
       </div>
     </div>
