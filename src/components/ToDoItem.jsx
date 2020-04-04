@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 function ToDoItem(props) {
-  function finishedTask() {}
-
   return (
     <div>
-      <li onClick={finishedTask}>{props.itemText} </li>
+      <li onClick={() => {
+           props.onChecked(props.id); 
+      }}>
+      {props.itemText} </li>
     </div>
   );
 }
